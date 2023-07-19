@@ -1,0 +1,46 @@
+<!-- <mat-nav-list class="side-navnar">
+  <ng-container *ngFor="let menu of menuList | async; index as i;">
+    <ng-container [ngTemplateOutlet]="menu.children ?  childMenu : parentMenu" [ngTemplateOutletContext]="{ menu: menu }"></ng-container>
+  </ng-container>
+</mat-nav-list>
+
+<ng-template #parentMenu let-menu="menu">
+  <mat-list-item routerLinkActive="is-active" [routerLink]="menu.routerLink" [routerLinkActiveOptions]="{ exact: true }">
+    <mat-icon>{{ menu.icon }}</mat-icon>{{ menu.text | translate }}
+  </mat-list-item>
+</ng-template>
+
+<ng-template #childMenu let-menu="menu">
+  <mat-expansion-panel [class.mat-elevation-z0]="true">
+    <mat-expansion-panel-header>
+      <mat-icon mat-list-icon>{{ menu.icon }}</mat-icon>{{ menu.text | translate }}
+    </mat-expansion-panel-header>
+    <mat-nav-list>
+      <mat-list-item *ngFor="let submenu of menu.children" routerLinkActive="is-active" [routerLink]="submenu.routerLink" [routerLinkActiveOptions]="{ exact: true }">
+        <mat-icon>{{ submenu.icon }}</mat-icon>{{ submenu.text | translate }}
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-expansion-panel>
+</ng-template> -->
+
+
+
+<!-- <main class="mat-app-background">
+  <mat-sidenav-container class="height100">
+    <mat-sidenav #sidenav mode="side" fixedTopGap="56" opened="true">
+      <app-sidenav-layout></app-sidenav-layout>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</main> -->
+
+
+      <!-- <button
+        mat-icon-button
+        (click)="toggleNavMenu()"
+      >
+        <mat-icon *ngIf="(isNavOpened | async) === false">menu</mat-icon>
+        <mat-icon *ngIf="(isNavOpened | async) === true">close</mat-icon>
+      </button> -->

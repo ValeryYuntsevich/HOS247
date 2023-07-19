@@ -1,0 +1,15 @@
+<mat-card class="server-error-card">
+  <mat-card-content>
+    <section class="d-grid gap-1 text-center">
+      <img src="../../../../../assets/images/404.png" alt="{{ '500.content.subTitle' | translate }}">
+      <h2>{{ '500.content.subTitle' | translate }}</h2>
+      <p>{{ '500.content.description' | translate }}</p>
+
+      <app-reuseble-button
+        class="mt-2"
+        [params]="config.button.home"
+        (click)="onClickRedirect()"
+      ></app-reuseble-button>
+    </section>
+  </mat-card-content>
+</mat-card>

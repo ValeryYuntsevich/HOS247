@@ -1,0 +1,9 @@
+<div class="main-wrapper" [ngClass]="{ 'darkMode': isThemeDark | async }">
+  <app-header-layout></app-header-layout>
+
+  <main class="mat-app-background">
+    <router-outlet></router-outlet>
+  </main>
+
+  <app-footer-layout></app-footer-layout>
+</div>

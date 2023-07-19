@@ -1,0 +1,29 @@
+/* Intro */
+
+section.intro {
+  background-color: var(--blue);
+  color: var(--white);
+}
+
+section.intro h3 {
+  margin-bottom:0;
+}
+
+section.intro figure {
+  border: 1px solid var(--yellow);
+}
+
+/* Contact */
+
+section.contact{
+  background-color: var(--black);
+  color: var(--white);
+}
+
+section.contact h2 {
+  margin-bottom: 2rem;
+}
+
+section.contact figure {
+  border: 1px solid var(--white);
+}

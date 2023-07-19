@@ -1,0 +1,22 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+  <ng-container *ngFor="let control of formDescription">
+    <ng-container *ngIf="control.type === 'input'">
+      <app-mat-form-field-control [params]="control.config" [formControlName]="control.key">
+        <button *ngIf="formControl(control.key).value" mat-icon-button matSuffix (click)="formControl(control.key).reset()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </app-mat-form-field-control>
+    </ng-container>
+
+    <ng-container *ngIf="control.type ==='select'">
+      <select [formControlName]="control.key">
+        <option *ngFor="let opt of control.options" [value]="opt">{{ opt }}</option>
+      </select>
+    </ng-container>
+  </ng-container>
+
+  <app-reuseble-button
+    [params]="submitConfig"
+    [isDisabled]="!form.valid"
+  ></app-reuseble-button>
+</form>

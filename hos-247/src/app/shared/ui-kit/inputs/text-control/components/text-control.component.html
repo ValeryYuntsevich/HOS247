@@ -1,0 +1,19 @@
+<mat-form-field class="d-block mb-1 width100" [appearance]="params.appearance">
+  <input matInput placeholder="{{ params.placeholder | translate }}" type="{{ params.type }}" [formControl]="valueControl"/>
+  <span matPrefix>
+    <ng-content select="[matPrefix]"></ng-content>
+  </span>
+  <mat-label><span>{{ params.label | translate }}</span></mat-label>
+  <mat-hint><span>{{ params.hint | translate }}</span></mat-hint>
+  <ng-content></ng-content>
+  <span matSuffix>
+    <ng-content select="[matSuffix]"></ng-content>
+    <button *ngIf="valueControl.value" mat-icon-button matSuffix (click)="valueControl.reset()">
+      <mat-icon *ngIf="!valueControl.pending">close</mat-icon>
+      <mat-progress-spinner *ngIf="valueControl.pending" [mode]="'indeterminate'" [diameter]="20"></mat-progress-spinner>
+    </button>
+  </span>
+  <mat-error *ngIf="valueControl.invalid">
+    <app-validation-messages [control]="valueControl" [validatorErrorMessage]="params.validatorErrorMessage"></app-validation-messages>
+  </mat-error>
+</mat-form-field>

@@ -1,0 +1,110 @@
+{
+  "login": {
+    "email": {
+      "label": "Enter your email",
+      "placeholder": "Email",
+      "errorInvalidEmailMessage": "Please provide a valid email address",
+      "errorRequiredEmailMessage": "Required"
+    },
+    "password": {
+      "label": "Enter your password",
+      "placeholder": "Password",
+      "errorInvalidPasswordMessage": "Please provide a valid password",
+      "errorRequiredPasswordMessage": "Required"
+    },
+    "link": {
+      "noAccount": "No Account? <strong>Sign Up</strong>",
+      "forgotPassword": "Forgot password?"
+    },
+    "button": {
+      "signIn": "Sign In",
+      "loginWithGoogle": "Login via Google"
+    },
+    "content": {
+      "or": "or"
+    },
+    "meta": {
+      "tag": "Description Meta Tag Content"
+    }
+  },
+  "register": {
+    "username": {
+      "label": "Enter your username",
+      "placeholder": "Username",
+      "errorRequiredUsernameMessage": "Required",
+      "errorUsernameExistMessage": "Username exists"
+    },
+    "email": {
+      "label": "Enter your email",
+      "placeholder": "Email",
+      "errorInvalidEmailMessage": "Please provide a valid email address",
+      "errorRequiredEmailMessage": "Required",
+      "errorEmailExistMessage": "Email exists"
+    },
+    "password": {
+      "label": "Enter your password",
+      "placeholder": "Password",
+      "errorInvalidPasswordMessage": "Password is too short",
+      "errorRequiredPasswordMessage": "Required"
+    },
+    "confirmPassword": {
+      "label": "Enter your confirm password",
+      "placeholder": "Confirm Password",
+      "errorInvalidPasswordMessage": "Password fields do not match",
+      "errorRequiredPasswordMessage": "Required"
+    },
+    "link": {
+      "haveAnAccount": "Have An Account? <strong>Sign In</strong>"
+    },
+    "content": {
+      "or": "or"
+    },
+    "button": {
+      "signUp": "Register",
+      "loginWithGoogle": "Login via Google"
+    },
+    "meta": {
+      "tag": "Description Meta Tag Content"
+    }
+  },
+  "404": {
+    "link": {
+      "redirect": "The Page you are looking for doesn't exist or an other error occured. You might want to go to the"
+    },
+    "button": {
+      "home": "Go to Home"
+    },
+    "content": {
+      "subTitle": "Error - Page Not Found!"
+    },
+    "meta": {
+      "tag": "Description Meta Tag Content"
+    }
+  },
+  "500": {
+    "button": {
+      "home": "Go to Home"
+    },
+    "content": {
+      "subTitle": "Error - Internal server error!",
+      "description": "The server encountered something unexpected that didn't allow it to complete the request. We apologize. You can go back to main page."
+    },
+    "meta": {
+      "tag": "Description Meta Tag Content"
+    }
+  },
+  "footer": {
+    "content": {
+      "copyright": "Copyright {{copyrightIcon}} {{copyrightYear}} All Rights Reserved",
+      "privacyPolicy": "Privacy Policy"
+    },
+    "meta": {
+      "tag": "Description Meta Tag Content"
+    }
+  },
+  "publicMenuItems": {
+    "home": "Home",
+    "privacyPolicy": "Privacy Policy",
+    "about": "About"
+  }
+}

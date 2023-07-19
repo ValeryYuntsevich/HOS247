@@ -1,0 +1,62 @@
+/* Style guide: https://medium.com/@stephan.romhart/how-i-organize-my-css-for-websites-without-a-framework-4d93fbbc74fe */
+
+@import './abstracts/variables.scss';
+@import './abstracts/utilities.scss';
+@import './abstracts/mixins.scss';
+
+@import './base/globals.scss';
+@import './base/media.scss';
+@import './base/reset.scss';
+@import './base/typography.scss';
+
+@import './components/horizontal-divider.scss';
+@import './components/password-strength.scss';
+
+@import './layout/auth.scss';
+@import './layout/footer.scss';
+@import './layout/grid.scss';
+@import './layout/public.scss';
+@import './layout/server-error.scss';
+@import './layout/specifics.scss';
+
+@import './themes/dark.scss';
+@import './themes/default.scss';
+
+@import './vendors/material.scss';
+
+
+// ::ng-deep .mat-expansion-panel-header {
+//   padding: 0 16px !important;
+// }
+
+// ::ng-deep .mat-nav-list .mat-icon {
+//   margin-right: 10px;
+// }
+
+// ::ng-deep .mat-expansion-panel-body {
+//   padding: 0 !important
+// }
+
+// ::ng-deep .mat-expansion-panel-header {
+//   height: 48px !important;
+// }
+
+// ::ng-deep .mat-expansion-panel .mat-list-item {
+//   padding-left: 15px !important;
+// }
+
+// ::ng-deep .mat-nav-list .is-active {
+//   background-color: rgb(204, 204, 204)!important;
+//   border-left     : 8px solid rgb(139, 137, 133);
+//   width           : calc(100% - 8px)!important;;
+// }
+
+
+
+// ::ng-deep .mat-list-base {
+//   padding-top: 0 !important;
+// }
+
+// ::ng-deep .mat-nav-list .mat-list-item.is-active .mat-list-item-content {
+//   padding: 0 8px;
+// } 

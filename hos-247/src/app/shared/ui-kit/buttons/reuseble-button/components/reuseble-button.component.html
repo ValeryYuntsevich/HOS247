@@ -1,0 +1,23 @@
+<ng-container *ngTemplateOutlet="params['text'] ? text : image"></ng-container>
+
+<ng-template #text>
+  <button
+    mat-raised-button
+    color="primary"
+    [type]="params.type"
+    [disabled]="isDisabled"
+    [ngStyle]="params.styles"
+    (click)="onTextClick()"
+  >
+    {{ params.text | translate }}
+  </button>
+</ng-template>
+
+<ng-template #image>
+  <img
+    alt="image button"
+    [src]="params.src"
+    [ngStyle]="params.styles"
+    (click)="onImgClick()"
+  >
+</ng-template>

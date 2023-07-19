@@ -1,0 +1,16 @@
+@import '../abstracts/mixins.scss';
+
+.auth-card {
+  min-width: 32rem;
+  max-width: 32rem;
+
+  &__icon[role=auth-img] {
+    @include md-icon-size(8rem);
+  }
+
+  &__button[role=google] {
+   display: grid;
+   grid-template-columns: auto 1fr;
+   align-items: center;
+  }
+}

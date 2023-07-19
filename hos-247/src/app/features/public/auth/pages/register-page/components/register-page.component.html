@@ -1,0 +1,55 @@
+<mat-card class="auth-card">
+  <mat-card-content>
+    <section class="mb-3 text-center">
+      <mat-icon class="auth-card__icon" role="auth-img" svgIcon="no-see"></mat-icon>
+    </section>
+
+    <form class="mb-3" [formGroup]="registerFormGroup" (ngSubmit)="onSubmit(registerFormGroup.value)">
+      <app-text-control
+        [params]="main.control.username"
+        [formControlName]="this.main.control.username.propertyName"
+      ></app-text-control>
+
+      <app-text-control
+        [params]="main.control.email"
+        [formControlName]="this.main.control.email.propertyName"
+      ></app-text-control>
+
+      <app-input-password-control
+        [params]="main.control.password"
+        [formControlName]="this.main.control.password.propertyName"
+      ></app-input-password-control>
+
+      <app-input-password-control
+        [params]="main.control.confirmPassword"
+        [formControlName]="this.main.control.confirmPassword.propertyName"
+      ></app-input-password-control>
+
+      <app-password-strength-bar
+        [passwordToCheck]="password.value"
+      ></app-password-strength-bar>
+
+      <app-reuseble-button
+        [params]="main.button.register"
+        [isDisabled]="!registerFormGroup.valid"
+      ></app-reuseble-button>
+    </form>
+
+    <section class="d-grid gap-2 text-center">
+      <app-horizontal-divider>
+        <p class="px-1">{{ 'register.content.or' | translate | uppercase }}</p>
+      </app-horizontal-divider>
+
+      <button mat-raised-button color="primary">
+        <div class="auth-card__button" role="google">
+          <mat-icon svgIcon="google"></mat-icon>
+          <span>{{ 'register.button.loginWithGoogle' | translate }}</span>
+        </div>
+      </button>
+
+      <p>
+        <a [routerLink]="internalUrls.Login" [innerHTML]="'register.link.haveAnAccount' | safeHtml | translate"></a>
+      </p>
+    </section>
+  </mat-card-content>
+</mat-card>

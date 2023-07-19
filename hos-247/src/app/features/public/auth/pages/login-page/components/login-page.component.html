@@ -1,45 +1,26 @@
-<mat-card class="auth-card">
-  <mat-card-content>
-    <section class="mb-3 text-center">
-      <mat-icon class="auth-card__icon" role="auth-img" svgIcon="car-key"></mat-icon>
-    </section>
-
-    <form class="mb-3" [formGroup]="loginFormGroup" (ngSubmit)="onSubmit(loginFormGroup.value)">
-      <app-text-control
-        [params]="config.control.email"
-        [formControlName]="emailPropertyName"
-      ></app-text-control>
-
-      <app-input-password-control
-        [params]="config.control.password"
-        [formControlName]="passwordPropertyName"
-      ></app-input-password-control>
-
-      <app-reuseble-button
-        [params]="config.button.login"
-        [isDisabled]="!loginFormGroup.valid || loginFormSubmitted"
-      ></app-reuseble-button>
-    </form>
-
-    <section class="d-grid gap-2 text-center">
-      <p>
-        <a [routerLink]="internalUrls.Register">{{ 'login.link.forgotPassword' | translate }}</a>
-      </p>
-
-      <app-horizontal-divider>
-        <p class="px-1">{{ 'login.content.or' | translate | uppercase }}</p>
-      </app-horizontal-divider>
-
-      <button mat-raised-button class="text-center" color="primary">
-        <div class="auth-card__button" role="google">
-          <mat-icon svgIcon="google"></mat-icon>
-          <span>{{ 'register.button.loginWithGoogle' | translate }}</span>
-        </div>
-      </button>
-
-      <p>
-        <a [routerLink]="internalUrls.Register" [innerHTML]="'login.link.noAccount' | safeHtml | translate"></a>
-      </p>
-    </section>
-  </mat-card-content>
-</mat-card>
+<section class="auth-container">
+  <mat-card class="auth-card">
+    <mat-card-content>
+      <section class="mb-3 text-center">
+        <mat-icon class="auth-card__icon" role="auth-img" svgIcon="car-key"></mat-icon>
+      </section>
+  
+      <form class="mb-3" [formGroup]="loginFormGroup" (ngSubmit)="onSubmit(loginFormGroup.value)">
+        <app-text-control
+          [params]="config.control.email"
+          [formControlName]="emailPropertyName"
+        ></app-text-control>
+  
+        <app-input-password-control
+          [params]="config.control.password"
+          [formControlName]="passwordPropertyName"
+        ></app-input-password-control>
+  
+        <app-reuseble-button
+          [params]="config.button.login"
+          [isDisabled]="!loginFormGroup.valid || loginFormSubmitted"
+        ></app-reuseble-button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</section>

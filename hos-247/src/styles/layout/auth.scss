@@ -1,5 +1,11 @@
 @import '../abstracts/mixins.scss';
 
+.auth-container {
+  display: grid;
+  place-content: center;
+  height: 100%;
+}
+
 .auth-card {
   min-width: 32rem;
   max-width: 32rem;

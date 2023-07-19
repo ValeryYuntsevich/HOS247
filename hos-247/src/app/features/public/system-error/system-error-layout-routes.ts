@@ -10,8 +10,4 @@ export const SYSTEM_ERROR_LAYOUT_ROUTES: Routes = [
 		path: '404',
 		loadChildren: () => import('./pages').then(m => m.NotFoundPageModule),
 	},
-	{
-		path: '500',
-		loadChildren: () => import('./pages').then(m => m.ServerErrorPageModule),
-	},
 ];

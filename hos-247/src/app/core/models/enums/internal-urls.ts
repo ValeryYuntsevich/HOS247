@@ -1,13 +1,12 @@
 export enum InternalUrls {
 	Base = '',
+	Secure = 'secure',
+	Public = 'public',
 	Unknown = '**',
 
 	Login = '/auth/sign-in',
-	Register = '/auth/sign-up',
 
-	ServerError = '/system-error/500',
 	NotFound = '/system-error/404',
 
-	Home = '/home',
 	PrivacyPolicy = '/privacy-policy',
 }

@@ -47,16 +47,16 @@ export class LoginPageComponent implements core.OnInit, core.OnDestroy {
 	public onSubmit({ password, email }: core_models.Login): void {
 		this.loginFormSubmitted = true;
 		if (password && email) {
-			// const subscription = this.authService
-			// 	.login({ password, email })
-			// 	.pipe(
-			// 		rxjs.catchError((error: http.HttpErrorResponse) => {
-			// 			throw new Error(error.message);
-			// 		}),
-			// 		rxjs.finalize(() => (this.loginFormSubmitted = false)),
-			// 	)
-			// 	.subscribe(() => this.router.navigate([this.internalUrls.Home]));
-			// this.subscriptions.add(subscription);
+			const subscription = this.authService
+				.login({ password, email })
+				.pipe(
+					rxjs.catchError((error: http.HttpErrorResponse) => {
+						throw new Error(error.message);
+					}),
+					rxjs.finalize(() => (this.loginFormSubmitted = false)),
+				)
+				.subscribe(() => this.router.navigate([this.internalUrls.Base]));
+			this.subscriptions.add(subscription);
 		} else {
 			this.loginFormSubmitted = false;
 		}

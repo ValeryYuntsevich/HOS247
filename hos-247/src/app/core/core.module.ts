@@ -9,6 +9,10 @@ import * as helpers from './helpers';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import {
+	LOCAL_STORAGE,
+	LocalStorageService,
+} from './repositories/local-storage.repository';
 
 @NgModule({
 	declarations: [],
@@ -27,6 +31,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 		{ provide: helpers.PATH_RESOLVE, useClass: helpers.PathResolveService },
 		{ provide: helpers.TOKEN, useClass: helpers.TokenService },
 		{ provide: helpers.THEMING, useClass: helpers.ThemingService },
+		{ provide: LOCAL_STORAGE, useClass: LocalStorageService },
 	],
 })
 export class CoreModule {

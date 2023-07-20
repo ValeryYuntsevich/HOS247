@@ -4,7 +4,7 @@ import { catchError, delay, map, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpEvent } from '@angular/common/http';
 
-import { EnvironmentRepository, RequestRepository } from '@core/repositories';
+import { EnvironmentRepository } from '@core/repositories';
 import { Login } from '@core/models';
 
 @Injectable({
@@ -16,12 +16,11 @@ export class AuthService {
 	private readonly baseUrl = `${this.environmentRepository.baseUrl}/auth`;
 
 	public constructor(
-		private readonly requestRepository: RequestRepository,
 		private readonly environmentRepository: EnvironmentRepository,
 	) {}
 
 	public login(loginData: Login): Observable<any> {
-		return of(true);
+		return of({ token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9' });
 	}
 
 	public checkIfUsernameExists(username: string): Observable<boolean> {

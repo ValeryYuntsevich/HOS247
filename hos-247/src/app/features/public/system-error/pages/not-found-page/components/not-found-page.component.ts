@@ -1,9 +1,7 @@
 import * as core from '@angular/core';
 import * as router from '@angular/router';
-
 import { Subscription, take } from 'rxjs';
 
-import { InternalUrls } from '@core/models';
 import { SEO, SeoService } from '@core/helpers/providers/seo.provider';
 
 import * as configs from '../configs';
@@ -36,7 +34,7 @@ export class NotFoundPageComponent implements core.OnInit, core.OnDestroy {
 	}
 
 	public onClickRedirect(): void {
-		this.router.navigate([InternalUrls.Base]);
+		this.router.navigate(['..']);
 	}
 
 	private setupRouteListeners(): void {

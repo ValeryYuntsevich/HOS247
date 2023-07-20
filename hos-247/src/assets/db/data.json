@@ -1,0 +1,84 @@
+[
+  {
+    "id": 1,
+    "name": "Apartment_1",
+    "description": "",
+    "volume": 100,
+    "boxes": [
+      {
+        "id": 2,
+        "name": "Box_1",
+        "description": "",
+        "volume": 100,
+        "boxes": [
+          {
+            "id": 3,
+            "name": "Box_1.1",
+            "description": "",
+            "volume": 100
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Box_2",
+        "description": "",
+        "volume": 100
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Apartment_2",
+    "description": "",
+    "volume": 100,
+    "boxes": [
+      {
+        "id": 6,
+        "name": "Box_1",
+        "description": "",
+        "volume": 100,
+        "boxes": [
+          {
+            "id": 7,
+            "name": "Box_1.1",
+            "description": "",
+            "volume": 100
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "name": "Box_2",
+        "description": "",
+        "volume": 100
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Apartment_3",
+    "description": "",
+    "volume": 100,
+    "boxes": [
+      {
+        "id": 10,
+        "name": "Box_1",
+        "description": "",
+        "volume": 100
+      },
+      {
+        "id": 11,
+        "name": "Box_2",
+        "description": "",
+        "volume": 100
+      },
+      {
+        "id": 12,
+        "name": "Box_2",
+        "description": "",
+        "volume": 100
+      }
+    ]
+  }
+]

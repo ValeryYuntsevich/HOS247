@@ -12,6 +12,7 @@ import * as repositories from '@core/repositories';
 import { EmailValidator } from '@features/public/auth/utils';
 import { AuthService } from '@core/repositories/auth.repository';
 import { CONFIG } from '../../../configs';
+import { UserAuthConfigRepository } from '@core/repositories/user-auth-config.repository';
 
 @core.Component({
 	selector: 'app-login-page',
@@ -35,6 +36,7 @@ export class LoginPageComponent implements core.OnInit, core.OnDestroy {
 		private readonly seoService: core_helpers.SeoService,
 		private readonly formBuilder: forms.UntypedFormBuilder,
 		private readonly authService: AuthService,
+		private readonly userAuthConfigRepository: UserAuthConfigRepository,
 		private readonly router: router.Router,
 	) {
 		this.seoService.setupRouterListeners();
@@ -55,7 +57,8 @@ export class LoginPageComponent implements core.OnInit, core.OnDestroy {
 					}),
 					rxjs.finalize(() => (this.loginFormSubmitted = false)),
 				)
-				.subscribe(() => {
+				.subscribe((config: { token: string }) => {
+					this.userAuthConfigRepository.setConfig(config);
 					this.router.navigate(['/secure/node']);
 				});
 			this.subscriptions.add(subscription);

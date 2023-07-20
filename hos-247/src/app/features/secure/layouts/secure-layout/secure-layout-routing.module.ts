@@ -11,7 +11,6 @@ import { AuthGuard } from '@core/helpers';
 const routes: Routes = [
   {
     path: InternalUrls.Base,
-    canActivateChild: [AuthGuard],
     component: SecureLayoutComponent,
     children: SECURE_ROUTES,
   },

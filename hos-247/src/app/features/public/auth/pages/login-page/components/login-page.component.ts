@@ -55,7 +55,9 @@ export class LoginPageComponent implements core.OnInit, core.OnDestroy {
 					}),
 					rxjs.finalize(() => (this.loginFormSubmitted = false)),
 				)
-				.subscribe(() => this.router.navigate([this.internalUrls.Base]));
+				.subscribe(() => {
+					this.router.navigate(['/secure/node']);
+				});
 			this.subscriptions.add(subscription);
 		} else {
 			this.loginFormSubmitted = false;

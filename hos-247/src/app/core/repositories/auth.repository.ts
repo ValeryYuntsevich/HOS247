@@ -20,8 +20,8 @@ export class AuthService {
 		private readonly environmentRepository: EnvironmentRepository,
 	) {}
 
-	public login(loginData: Login): Observable<HttpEvent<any>> {
-		return this.requestRepository.post('auth/sign-in', loginData);
+	public login(loginData: Login): Observable<any> {
+		return of(true);
 	}
 
 	public checkIfUsernameExists(username: string): Observable<boolean> {

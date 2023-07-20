@@ -4,11 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { InternalUrls } from '@core/models';
 
 export const APP_ROUTES: Routes = [
-	// {
-	// 	path: InternalUrls.Secure,
-	// 	loadChildren: () =>
-	// 		import('./features/secure').then(m => m.SecureLayoutModule),
-	// },
+	{
+		path: InternalUrls.Secure,
+		loadChildren: () =>
+			import('./features/secure').then(m => m.SecureLayoutModule),
+	},
 	{
 		path: InternalUrls.Base,
 		loadChildren: () =>

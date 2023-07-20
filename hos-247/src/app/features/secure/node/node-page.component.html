@@ -1,0 +1,17 @@
+<section class="thing-node">
+  <h3>Nested Tree</h3>
+
+  <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="thing-node__tree">
+    <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+      <button mat-icon-button disabled></button>
+      {{ node.data.name }}
+    </mat-tree-node>
+
+    <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+      <button mat-icon-button matTreeNodeToggle>
+        <mat-icon>{{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}</mat-icon>
+      </button>
+      <p>{{ node.data.name }}</p>
+    </mat-tree-node>
+  </mat-tree>
+</section>

@@ -6,6 +6,7 @@ import { NodesService } from '../services/nodes.service';
 import { NodeConfigRepository } from '../services/node-config.repository';
 
 import {
+	addNode,
 	deleteNode,
 	initializeNode,
 	readNode,
@@ -36,6 +37,19 @@ export class NodesEffect {
 			}),
 		),
 	);
+
+	create$ = createEffect(() => {
+		return this.actions$.pipe(
+			ofType(addNode),
+			switchMap(actions => {
+				return this.nodesService.create(actions).pipe(
+					map(() => {
+						return readNode({ nodes: this.nodeConfigRepository.getNode() });
+					}),
+				);
+			}),
+		);
+	});
 
 	update$ = createEffect(() => {
 		return this.actions$.pipe(

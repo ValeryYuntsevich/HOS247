@@ -1,0 +1,21 @@
+.thing-edit-modal {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    & > h2 {
+      margin: 0;
+    }
+  }
+
+  &__form {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    & > mat-form-field {
+      width: 100%;
+    }
+  }
+}

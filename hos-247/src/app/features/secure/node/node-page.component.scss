@@ -5,6 +5,13 @@
     margin-top: 2rem;
   }
 
+
+  &__footer {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+
   &__tree-item {
     display: flex;
     justify-content: space-between;

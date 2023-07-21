@@ -6,7 +6,6 @@ import { InternalUrls } from '@core/models';
 import { SECURE_ROUTES } from './configs';
 
 import { SecureLayoutComponent } from './components/secure-layout.component';
-import { AuthGuard } from '@core/helpers';
 
 const routes: Routes = [
   {

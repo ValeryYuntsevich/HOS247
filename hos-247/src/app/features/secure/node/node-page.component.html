@@ -29,6 +29,13 @@
     </mat-tree-node>
   </mat-tree>
 
+  <div class="thing-node__footer">
+    <button mat-raised-button color="primary" (click)="addDialog()">
+      <mat-icon>add</mat-icon>
+      <span>Add container</span>
+    </button>
+  </div>
+
   <mat-menu #menu="matMenu">
     <ng-template matMenuContent let-node="node">
       <button class="d-flex align-items-center" mat-menu-item (click)="infoDialog(node)">

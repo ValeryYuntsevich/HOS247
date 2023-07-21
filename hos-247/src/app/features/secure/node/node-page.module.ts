@@ -15,7 +15,9 @@ import { NodesEffect } from './store/node.effect';
 import { nodeReducer } from './store/node.reducer';
 import { ConfirmModalComponent } from './modals/confirm-modal/confirm-modal.component';
 import { EditModalComponent } from './modals/edit-modal/edit-modal.component';
-import { InfoModalComponent } from './modals/info-edit/info-modal.component';
+import { InfoModalComponent } from './modals/info-modal/info-modal.component';
+import { AddModalComponent } from './modals/add-modal/add-modal.component';
+
 import { DialogService } from './services/dialog.service';
 
 @NgModule({
@@ -24,6 +26,7 @@ import { DialogService } from './services/dialog.service';
 		ConfirmModalComponent,
 		EditModalComponent,
 		InfoModalComponent,
+		AddModalComponent,
 	],
 	imports: [
 		CommonModule,
@@ -33,6 +36,6 @@ import { DialogService } from './services/dialog.service';
 		StoreModule.forFeature('node', nodeReducer),
 		EffectsModule.forFeature([NodesEffect]),
 	],
-	providers: [DialogService]
+	providers: [DialogService],
 })
 export class NodePageModule {}

@@ -8,7 +8,12 @@ import { Store, select } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
 import { INode, IFlatNode } from './models';
-import { deleteNode, initializeNode, updateNode } from './store/node.action';
+import {
+	addNode,
+	deleteNode,
+	initializeNode,
+	updateNode,
+} from './store/node.action';
 import { selectBooks } from './store/node.selector';
 import { DialogService } from './services/dialog.service';
 
@@ -71,6 +76,12 @@ export class NodePageComponent implements core.OnInit, core.OnDestroy {
 	editDialog(node: INode): void {
 		this.dialogService.editDialog(node).subscribe(data => {
 			this.store.dispatch(updateNode({ id: node.id, data }));
+		});
+	}
+
+	addDialog(): void {
+		this.dialogService.addDialog().subscribe(data => {
+			this.store.dispatch(addNode({ ...data }));
 		});
 	}
 

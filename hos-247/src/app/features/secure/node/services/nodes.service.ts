@@ -31,6 +31,19 @@ export class NodesService {
 		return of(this.nodeConfigRepository.getNode());
 	}
 
+	create(data: {
+		name: string;
+		volume: number;
+		description: string;
+	}): Observable<INode[]> {
+		const nodes = this.nodeConfigRepository.getNode();
+		const id = this.getUniqueId(nodes);
+		const newNode = { id, ...data };
+		nodes.push(newNode);
+		this.nodeConfigRepository.setNode(nodes);
+		return of(this.nodeConfigRepository.getNode());
+	}
+
 	delete(id: number): Observable<INode[]> {
 		const nodes = this.nodeConfigRepository.getNode();
 		const newNode = this.removeById(nodes, id);
@@ -73,17 +86,39 @@ export class NodesService {
 			[],
 		);
 
-	// findNodeById(nodes: INode[], id: number): INode | null {
-	// 	let result = null;
+	getUniqueId(nodes: INode[]): number {
+		const ids: number[] = [];
+		JSON.stringify(nodes, (key, value) => {
+			if (key === 'id') {
+				ids.push(value);
+			}
+			return value;
+		});
+		return Math.max(...ids) + 1;
+	}
 
-	// 	for (let node of nodes) {
-	// 		result = this.findNode(node, id);
-	// 		if (result) {
-	// 			break;
-	// 		}
-	// 	}
+	// reduceTree<Item, Acc>(
+	// 	next: (item: Item) => Item[],
+	// 	reducer: (acc: Acc, item: Item) => Acc,
+	// ) {
+	// 	const step = (acc: Acc, item: Item): Acc =>
+	// 		next(item).reduce((_, child) => step(_, child), reducer(acc, item));
+	// 	return step;
+	// }
 
-	// 	return result;
+	// // Test
+	// const allIds = reduceTree(
+	//     (item: TreeItem) => item.children,
+	//     (allIds: string[], item) => [...allIds, item.uid]
+	// )(
+	//     [], obj
+	// );
+
+	// findNodeIds(nodes: INode[]): any {
+	// 	return this.reduceTree(
+	// 		(item: any) => item.boxes,
+	// 		(allIds: any[], item) => [...allIds, item.id],
+	// 	)([], obj);
 	// }
 
 	// findNode(node: INode, id: number): INode | null {

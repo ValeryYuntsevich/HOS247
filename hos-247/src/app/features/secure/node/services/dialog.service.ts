@@ -4,7 +4,8 @@ import { Observable } from 'rxjs';
 
 import { ConfirmModalComponent } from '../modals/confirm-modal/confirm-modal.component';
 import { EditModalComponent } from '../modals/edit-modal/edit-modal.component';
-import { InfoModalComponent } from '../modals/info-edit/info-modal.component';
+import { InfoModalComponent } from '../modals/info-modal/info-modal.component';
+import { AddModalComponent } from '../modals/add-modal/add-modal.component';
 
 import { INode } from '../models';
 
@@ -21,10 +22,23 @@ export class DialogService {
 			.afterClosed();
 	}
 
-	editDialog(data: INode): Observable<any> {
+	editDialog(data: INode): Observable<{ name: string; description: string }> {
 		return this.dialog
 			.open(EditModalComponent, {
 				data,
+				width: '400px',
+				disableClose: true,
+			})
+			.afterClosed();
+	}
+
+	addDialog(): Observable<{
+		name: string;
+		volume: number;
+		description: string;
+	}> {
+		return this.dialog
+			.open(AddModalComponent, {
 				width: '400px',
 				disableClose: true,
 			})

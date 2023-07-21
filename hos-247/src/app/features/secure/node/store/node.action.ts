@@ -19,3 +19,8 @@ export const updateNode = createAction(
 	ActionType.Update,
 	props<{ id: number; data: { name: string; description: string } }>(),
 );
+
+export const addNode = createAction(
+	ActionType.Create,
+	props<{ name: string; volume: number; description: string }>(),
+);

@@ -3,15 +3,46 @@
 
   <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="thing-node__tree">
     <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
-      <button mat-icon-button disabled></button>
-      {{ node.data.name }}
+      <div class="thing-node__tree-item">
+        <div class="thing-node__tree-item--left">
+          <button mat-icon-button disabled></button>
+          <p>{{ node.data.name }}</p>
+        </div>
+        <button mat-icon-button [matMenuTriggerFor]="menu" [matMenuTriggerData]="{ node: node.data }">
+          <mat-icon>border_color</mat-icon>
+        </button>
+      </div>
     </mat-tree-node>
 
     <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
-      <button mat-icon-button matTreeNodeToggle>
-        <mat-icon>{{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}</mat-icon>
-      </button>
-      <p>{{ node.data.name }}</p>
+      <div class="thing-node__tree-item">
+        <div class="thing-node__tree-item--left">
+          <button mat-icon-button matTreeNodeToggle>
+            <mat-icon>{{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}</mat-icon>
+          </button>
+          <p>{{ node.data.name }}</p>
+        </div>
+        <button mat-icon-button [matMenuTriggerFor]="menu" [matMenuTriggerData]="{ node: node.data }">
+          <mat-icon>border_color</mat-icon>
+        </button>
+      </div>
     </mat-tree-node>
   </mat-tree>
+
+  <mat-menu #menu="matMenu">
+    <ng-template matMenuContent let-node="node">
+      <button class="d-flex align-items-center" mat-menu-item (click)="infoDialog(node)">
+        <mat-icon>info</mat-icon>
+        <span>Info</span>
+      </button>
+      <button class="d-flex align-items-center" mat-menu-item (click)="editDialog(node)">
+        <mat-icon>edit</mat-icon>
+        <span>Edit</span>
+      </button>
+      <button class="d-flex align-items-center" mat-menu-item (click)="confirmDialog(node)">
+        <mat-icon>delete</mat-icon>
+        <span>Remove</span>
+      </button>
+    </ng-template>
+  </mat-menu>
 </section>

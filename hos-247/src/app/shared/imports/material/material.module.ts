@@ -16,6 +16,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTreeModule } from '@angular/material/tree';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const modules: any[] = [
 	CommonModule,
@@ -34,6 +35,7 @@ const modules: any[] = [
 	MatSlideToggleModule,
 	MatCheckboxModule,
 	MatTreeModule,
+	MatDialogModule,
 ];
 
 @NgModule({

@@ -1,0 +1,21 @@
+<section>
+  <div class="thing-confirm-modal__header">
+    <h2 mat-dialog-title>Confirm Action</h2>
+    <button mat-icon-button [mat-dialog-close]="false">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div mat-dialog-content>
+    <p>Do you want to confirm this action?</p>
+  </div>
+
+  <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button [mat-dialog-close]="false">
+      Cancel
+    </button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true">
+      Confirm
+    </button>
+  </div>
+</section>

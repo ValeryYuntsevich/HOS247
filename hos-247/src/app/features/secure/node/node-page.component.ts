@@ -4,11 +4,13 @@ import {
 	MatTreeFlatDataSource,
 	MatTreeFlattener,
 } from '@angular/material/tree';
-import { INode, IFlatNode } from './models';
 import { Store, select } from '@ngrx/store';
-import { initializeNode } from './store/node.action';
-import { selectBooks } from './store/node.selector';
 import { Observable, Subscription } from 'rxjs';
+
+import { INode, IFlatNode } from './models';
+import { deleteNode, initializeNode, updateNode } from './store/node.action';
+import { selectBooks } from './store/node.selector';
+import { DialogService } from './services/dialog.service';
 
 @core.Component({
 	selector: 'app-node-page',
@@ -42,13 +44,38 @@ export class NodePageComponent implements core.OnInit, core.OnDestroy {
 
 	dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
-	constructor(private store: Store<INode>) {}
+	constructor(
+		private store: Store<INode>,
+		private dialogService: DialogService,
+	) {}
 
 	ngOnInit(): void {
 		this.init();
 		const subscription = this.node$.subscribe(
 			data => (this.dataSource.data = data),
 		);
+		this.subscriptions.add(subscription);
+	}
+
+	confirmDialog(node: INode): void {
+		const subscription = this.dialogService
+			.confirmDialog()
+			.subscribe(confirmed => {
+				if (confirmed) {
+					this.store.dispatch(deleteNode({ id: node.id }));
+				}
+			});
+		this.subscriptions.add(subscription);
+	}
+
+	editDialog(node: INode): void {
+		this.dialogService.editDialog(node).subscribe(data => {
+			this.store.dispatch(updateNode({ id: node.id, data }));
+		});
+	}
+
+	infoDialog(node: INode): void {
+		const subscription = this.dialogService.infoDialog(node).subscribe();
 		this.subscriptions.add(subscription);
 	}
 

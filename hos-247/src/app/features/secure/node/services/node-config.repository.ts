@@ -18,7 +18,7 @@ export class NodeConfigRepository {
 		private readonly localStorageService: LocalStorageService,
 	) {}
 
-	setNode(node: string): void {
+	setNode(node: string | INode[]): void {
 		this.localStorageService.setItem(this.nodeKey, JSON.stringify(node));
 	}
 

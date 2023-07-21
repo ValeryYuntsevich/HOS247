@@ -1,0 +1,31 @@
+<section>
+  <div class="thing-edit-modal__header">
+    <h2 mat-dialog-title>Edit form</h2>
+    <button mat-icon-button [mat-dialog-close]="false">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div mat-dialog-content>
+    <form class="thing-edit-modal__form" [formGroup]="editNodeFormGroup">
+      <mat-form-field appearance="legacy">
+        <mat-label>Name</mat-label>
+        <input matInput [formControlName]="namePropertyName">
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy">
+        <mat-label>Description</mat-label>
+        <textarea matInput rows="7" [formControlName]="descriptionPropertyName"></textarea>
+      </mat-form-field>
+    </form>
+  </div>
+
+  <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button [mat-dialog-close]="false">
+      Cancel
+    </button>
+    <button mat-raised-button color="primary" (click)="apply()">
+      Apply
+    </button>
+  </div>
+</section>

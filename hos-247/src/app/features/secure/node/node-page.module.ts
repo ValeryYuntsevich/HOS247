@@ -16,7 +16,8 @@ import { nodeReducer } from './store/node.reducer';
 import { ConfirmModalComponent } from './modals/confirm-modal/confirm-modal.component';
 import { UpdateModalComponent } from './modals/update-modal/update-modal.component';
 import { InfoModalComponent } from './modals/info-modal/info-modal.component';
-import { AddModalComponent } from './modals/add-modal/add-modal.component';
+import { AddNewNodeModalComponent } from './modals/add-new-node-modal/add-new-node-modal.component';
+import { AddNodeModalComponent } from './modals/add-node-modal/add-node-modal.component';
 
 import { DialogService } from './services/dialog.service';
 
@@ -26,7 +27,8 @@ import { DialogService } from './services/dialog.service';
 		ConfirmModalComponent,
 		UpdateModalComponent,
 		InfoModalComponent,
-		AddModalComponent,
+		AddNewNodeModalComponent,
+		AddNodeModalComponent,
 	],
 	imports: [
 		CommonModule,

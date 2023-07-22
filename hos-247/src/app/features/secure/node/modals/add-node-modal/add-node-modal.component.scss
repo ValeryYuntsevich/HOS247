@@ -1,0 +1,47 @@
+.thing-add-node-modal {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    & > h2 {
+      margin: 0;
+    }
+  }
+
+  &__form {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  &__action-button {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  &__control-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1rem;
+  }
+
+  &__remove-action {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2rem;
+  }
+
+  &__divider {
+    margin-bottom: 2rem;
+  }
+
+  &__statistics {
+    display: flex;
+    justify-content: space-between;;
+  }
+}
+
+mat-form-field {
+  width: 100%;
+}

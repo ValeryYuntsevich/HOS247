@@ -19,7 +19,12 @@ export const updateNode = createAction(
 	props<{ id: number; data: IUpdatedNode }>(),
 );
 
-export const addNode = createAction(
+export const createNewNode = createAction(
 	ActionType.Create,
 	props<{ data: INewNode }>(),
+);
+
+export const addNodeById = createAction(
+	ActionType.AddById,
+	props<{ id: number; data: INewNode[] }>(),
 );

@@ -5,9 +5,10 @@ import { Observable } from 'rxjs';
 import { ConfirmModalComponent } from '../modals/confirm-modal/confirm-modal.component';
 import { UpdateModalComponent } from '../modals/update-modal/update-modal.component';
 import { InfoModalComponent } from '../modals/info-modal/info-modal.component';
-import { AddModalComponent } from '../modals/add-modal/add-modal.component';
+import { AddNewNodeModalComponent } from '../modals/add-new-node-modal/add-new-node-modal.component';
+import { AddNodeModalComponent } from '../modals/add-node-modal/add-node-modal.component';
 
-import { IAddFormData, INode, IUpdatedNode } from '../models';
+import { INewNode, INode, INodeFormData, IUpdatedNode } from '../models';
 
 @Injectable()
 export class DialogService {
@@ -32,9 +33,23 @@ export class DialogService {
 			.afterClosed();
 	}
 
-	addDialog(): Observable<IAddFormData> {
+	addDialog(
+		id: number,
+		nodes: INode[],
+		title: string,
+	): Observable<INodeFormData[]> {
 		return this.dialog
-			.open(AddModalComponent, {
+			.open(AddNodeModalComponent, {
+				data: { id, nodes, title },
+				minWidth: '400px',
+				disableClose: true,
+			})
+			.afterClosed();
+	}
+
+	addNewDialog(): Observable<INewNode> {
+		return this.dialog
+			.open(AddNewNodeModalComponent, {
 				width: '400px',
 				disableClose: true,
 			})

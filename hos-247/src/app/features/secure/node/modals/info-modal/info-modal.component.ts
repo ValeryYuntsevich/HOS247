@@ -23,10 +23,10 @@ export class InfoModalComponent implements core.OnInit {
 	) {}
 
 	ngOnInit(): void {
-		this.createLoginForm();
+		this.createNodeForm();
 	}
 
-	private createLoginForm(): void {
+	private createNodeForm(): void {
 		this.infoNodeFormGroup = this.formBuilder.group({
 			[this.namePropertyName]: [{ value: this.data.name, disabled: true }],
 			[this.volumePropertyName]: [{ value: this.data.volume, disabled: true }],

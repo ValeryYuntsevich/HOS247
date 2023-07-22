@@ -30,7 +30,7 @@
   </mat-tree>
 
   <div class="thing-node__footer">
-    <button mat-raised-button color="primary" (click)="addContainer()">
+    <button mat-raised-button color="primary" (click)="addNewContainer()">
       <mat-icon>add</mat-icon>
       <span>Add container</span>
     </button>
@@ -42,11 +42,11 @@
         <mat-icon>info</mat-icon>
         <span>Info</span>
       </button>
-      <button *ngIf="isContainer(node.type)" class="d-flex align-items-center" mat-menu-item (click)="infoDialog(node)">
+      <button *ngIf="isContainer(node.type)" class="d-flex align-items-center" mat-menu-item (click)="addContainer(node)">
         <mat-icon>add</mat-icon>
         <span>Add container</span>
       </button>
-      <button class="d-flex align-items-center" mat-menu-item (click)="infoDialog(node)">
+      <button *ngIf="isContainer(node.type)" class="d-flex align-items-center" mat-menu-item (click)="addThing(node)">
         <mat-icon>add</mat-icon>
         <span>Add thing</span>
       </button>

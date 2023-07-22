@@ -28,12 +28,24 @@ export class NodesService {
 		return of(this.nodeConfigRepository.getNode());
 	}
 
-	create(data: INewNode): Observable<INode[]> {
+	createNew(data: INewNode): Observable<INode[]> {
 		const nodes = this.nodeConfigRepository.getNode();
 		const id = this.getUniqueId(nodes);
 		const newNode = { id, ...data };
 		nodes.push(newNode);
 		this.nodeConfigRepository.setNode(nodes);
+		return of(this.nodeConfigRepository.getNode());
+	}
+
+	addNewById(id: number, data: INewNode[]): Observable<INode[]> {
+		const nodes = this.nodeConfigRepository.getNode();
+		const uniqueId = this.getUniqueId(nodes);
+		const newNodes = data.map((item, index) => ({
+			...item,
+			id: index + uniqueId,
+		}));
+		const modifyNodes = this.addNodeById(nodes, id, newNodes);
+		this.nodeConfigRepository.setNode(modifyNodes);
 		return of(this.nodeConfigRepository.getNode());
 	}
 
@@ -47,6 +59,18 @@ export class NodesService {
 	initialize(): Observable<string> {
 		return this.http.get<string>(this.URL);
 	}
+
+	private addNodeById = (nodes: any, id: number, newNodes: INode[]) =>
+		nodes.map((node: any) => {
+			if (node.id === id) {
+				node.boxes =
+					nodes.boxes && nodes.boxes.length
+						? [...nodes.boxes].concat(newNodes)
+						: newNodes;
+			} else if (node.boxes)
+				node.boxes = this.addNodeById(node.boxes, id, newNodes);
+			return node;
+		});
 
 	private replaceById = (
 		nodes: any,

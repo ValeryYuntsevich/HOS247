@@ -1,4 +1,4 @@
-export interface IAddFormData {
+export interface INodeFormData {
 	name: string;
 	description: string;
 	volume: number;

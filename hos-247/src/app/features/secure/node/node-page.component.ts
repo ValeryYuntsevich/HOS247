@@ -7,9 +7,10 @@ import {
 import { Store, select } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
-import { INode, IFlatNode, NodeType } from './models';
+import { INode, IFlatNode, NodeType, INodeFormData } from './models';
 import {
-	addNode,
+	addNodeById,
+	createNewNode,
 	deleteNode,
 	initializeNode,
 	updateNode,
@@ -79,13 +80,35 @@ export class NodePageComponent implements core.OnInit, core.OnDestroy {
 		});
 	}
 
-	addContainer(): void {
-		this.dialogService.addDialog().subscribe(formData => {
-			const data = {
-				type: NodeType.Container,
-				...formData,
-			};
-			this.store.dispatch(addNode({ data }));
+	addNewContainer(): void {
+		this.dialogService.addNewDialog().subscribe(data => {
+			this.store.dispatch(createNewNode({ data }));
+		});
+	}
+
+	addContainer(node: INode): void {
+		const id = node.id;
+		const nodes = this.dataSource.data;
+		this.dialogService
+			.addDialog(id, nodes, 'containers')
+			.subscribe((formData: INodeFormData[]) => {
+				const data = formData.map(container => ({
+					...container,
+					type: NodeType.Container,
+				}));
+				this.store.dispatch(addNodeById({ id, data }));
+			});
+	}
+
+	addThing(node: INode): void {
+		const id = node.id;
+		const nodes = this.dataSource.data;
+		this.dialogService.addDialog(id, nodes, 'things').subscribe(formData => {
+			const data = formData.map(thing => ({
+				...thing,
+				type: NodeType.Thing,
+			}));
+			this.store.dispatch(addNodeById({ id, data }));
 		});
 	}
 

@@ -22,14 +22,14 @@ export class UpdateModalComponent implements core.OnInit {
 	) {}
 
 	ngOnInit(): void {
-		this.createLoginForm();
+		this.createNodeForm();
 	}
 
 	apply(): void {
 		this.dialogRef.close(this.updateNodeFormGroup.value);
 	}
 
-	private createLoginForm(): void {
+	private createNodeForm(): void {
 		this.updateNodeFormGroup = this.formBuilder.group({
 			[this.namePropertyName]: [this.data.name],
 			[this.descriptionPropertyName]: [this.data.description],

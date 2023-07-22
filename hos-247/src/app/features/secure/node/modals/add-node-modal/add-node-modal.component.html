@@ -1,0 +1,66 @@
+<section>
+  <div class="thing-add-node-modal__header">
+    <h2 mat-dialog-title>Add {{ title }}</h2>
+    <button mat-icon-button [mat-dialog-close]="false">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div mat-dialog-content>
+    <form class="thing-add-node-modal__form" [formGroup]="addNodeFormGroup">
+      <div [formArrayName]="entitiesPropertyName">
+        <div class="thing-add-node-modal__action-button">
+          <button mat-raised-button color="primary" (click)="addEntitiesControl()">
+            <mat-icon>add</mat-icon>
+            <span>Add {{ title }}</span>
+          </button>
+        </div>
+        <div *ngFor="let container of entities.controls; let i = index, let last = last" [formGroupName]="i">
+          <div class="thing-add-node-modal__control-wrapper">
+            <mat-form-field appearance="legacy">
+              <mat-label>Name</mat-label>
+              <input matInput [formControlName]="namePropertyName">
+            </mat-form-field>
+  
+            <mat-form-field appearance="legacy">
+              <mat-label>Volume</mat-label>
+              <input matInput [formControlName]="volumePropertyName">
+            </mat-form-field>
+          </div>
+
+          <mat-form-field appearance="legacy">
+            <mat-label>Description</mat-label>
+            <textarea matInput rows="2" [formControlName]="descriptionPropertyName"></textarea>
+          </mat-form-field>
+
+          <div *ngIf="entities.controls.length > 1" class="thing-add-node-modal__remove-action">
+            <button mat-raised-button color="primary" (click)="deleteEntitiesControl(i)">
+              <mat-icon>remove_circle_outline</mat-icon>
+            </button>
+          </div>
+          <mat-divider *ngIf="!last" class="thing-add-node-modal__divider"></mat-divider>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="thing-add-node-modal__statistics">
+    <div>
+      <div>Total: {{ 500 }}</div>
+      <div>Total free: {{ 50000 }}</div>
+    </div>
+    <div>
+      <div>Parent: {{ 500000 }}</div>
+      <div>Parent free: {{ 50000 }}</div>
+    </div>
+  </div>
+
+  <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button [mat-dialog-close]="false">
+      Cancel
+    </button>
+    <button mat-raised-button color="primary" [disabled]="addNodeFormGroup.invalid" (click)="add()">
+      Apply
+    </button>
+  </div>
+</section>

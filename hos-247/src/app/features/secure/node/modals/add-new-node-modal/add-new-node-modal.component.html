@@ -1,13 +1,13 @@
 <section>
-  <div class="thing-edit-modal__header">
-    <h2 mat-dialog-title>Edit form</h2>
+  <div class="thing-new-node-modal__header">
+    <h2 mat-dialog-title>Add new node form</h2>
     <button mat-icon-button [mat-dialog-close]="false">
       <mat-icon>close</mat-icon>
     </button>
   </div>
 
   <div mat-dialog-content>
-    <form class="thing-edit-modal__form" [formGroup]="addNodeFormGroup">
+    <form class="thing-new-node-modal__form" [formGroup]="addNewNodeNodeFormGroup">
       <mat-form-field appearance="legacy">
         <mat-label>Name</mat-label>
         <input matInput [formControlName]="namePropertyName">
@@ -29,7 +29,7 @@
     <button mat-raised-button [mat-dialog-close]="false">
       Cancel
     </button>
-    <button mat-raised-button color="primary" [disabled]="addNodeFormGroup.invalid" (click)="add()">
+    <button mat-raised-button color="primary" [disabled]="addNewNodeNodeFormGroup.invalid" (click)="add()">
       Apply
     </button>
   </div>

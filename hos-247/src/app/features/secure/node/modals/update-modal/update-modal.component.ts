@@ -5,12 +5,12 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { INode } from '../../models';
 
 @core.Component({
-	selector: 'app-edit-modal',
-	templateUrl: './edit-modal.component.html',
-	styleUrls: ['./edit-modal.component.scss'],
+	selector: 'app-update-modal',
+	templateUrl: './update-modal.component.html',
+	styleUrls: ['./update-modal.component.scss'],
 })
-export class EditModalComponent implements core.OnInit {
-	editNodeFormGroup = new UntypedFormGroup({});
+export class UpdateModalComponent implements core.OnInit {
+	updateNodeFormGroup = new UntypedFormGroup({});
 
 	readonly namePropertyName = 'name';
 	readonly descriptionPropertyName = 'description';
@@ -18,7 +18,7 @@ export class EditModalComponent implements core.OnInit {
 	constructor(
 		@core.Inject(MAT_DIALOG_DATA) private readonly data: INode,
 		private readonly formBuilder: UntypedFormBuilder,
-		private readonly dialogRef: MatDialogRef<EditModalComponent>,
+		private readonly dialogRef: MatDialogRef<UpdateModalComponent>,
 	) {}
 
 	ngOnInit(): void {
@@ -26,11 +26,11 @@ export class EditModalComponent implements core.OnInit {
 	}
 
 	apply(): void {
-		this.dialogRef.close(this.editNodeFormGroup.value);
+		this.dialogRef.close(this.updateNodeFormGroup.value);
 	}
 
 	private createLoginForm(): void {
-		this.editNodeFormGroup = this.formBuilder.group({
+		this.updateNodeFormGroup = this.formBuilder.group({
 			[this.namePropertyName]: [this.data.name],
 			[this.descriptionPropertyName]: [this.data.description],
 		});

@@ -1,7 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
-import { ActionType } from '../models/enums';
-import { INode } from '../models';
+import { INewNode, INode, IUpdatedNode, ActionType } from '../models';
 
 export const initializeNode = createAction(ActionType.Initialize);
 
@@ -17,10 +16,10 @@ export const deleteNode = createAction(
 
 export const updateNode = createAction(
 	ActionType.Update,
-	props<{ id: number; data: { name: string; description: string } }>(),
+	props<{ id: number; data: IUpdatedNode }>(),
 );
 
 export const addNode = createAction(
 	ActionType.Create,
-	props<{ name: string; volume: number; description: string }>(),
+	props<{ data: INewNode }>(),
 );

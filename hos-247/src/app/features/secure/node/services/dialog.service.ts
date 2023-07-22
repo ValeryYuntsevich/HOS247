@@ -3,11 +3,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 
 import { ConfirmModalComponent } from '../modals/confirm-modal/confirm-modal.component';
-import { EditModalComponent } from '../modals/edit-modal/edit-modal.component';
+import { UpdateModalComponent } from '../modals/update-modal/update-modal.component';
 import { InfoModalComponent } from '../modals/info-modal/info-modal.component';
 import { AddModalComponent } from '../modals/add-modal/add-modal.component';
 
-import { INode } from '../models';
+import { IAddFormData, INode, IUpdatedNode } from '../models';
 
 @Injectable()
 export class DialogService {
@@ -22,9 +22,9 @@ export class DialogService {
 			.afterClosed();
 	}
 
-	editDialog(data: INode): Observable<{ name: string; description: string }> {
+	updateDialog(data: INode): Observable<IUpdatedNode> {
 		return this.dialog
-			.open(EditModalComponent, {
+			.open(UpdateModalComponent, {
 				data,
 				width: '400px',
 				disableClose: true,
@@ -32,11 +32,7 @@ export class DialogService {
 			.afterClosed();
 	}
 
-	addDialog(): Observable<{
-		name: string;
-		volume: number;
-		description: string;
-	}> {
+	addDialog(): Observable<IAddFormData> {
 		return this.dialog
 			.open(AddModalComponent, {
 				width: '400px',
@@ -45,7 +41,7 @@ export class DialogService {
 			.afterClosed();
 	}
 
-	infoDialog(data: INode): Observable<any> {
+	infoDialog(data: INode): Observable<void> {
 		return this.dialog
 			.open(InfoModalComponent, {
 				data,

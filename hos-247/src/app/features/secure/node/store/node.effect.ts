@@ -42,7 +42,7 @@ export class NodesEffect {
 		return this.actions$.pipe(
 			ofType(addNode),
 			switchMap(actions => {
-				return this.nodesService.create(actions).pipe(
+				return this.nodesService.create(actions.data).pipe(
 					map(() => {
 						return readNode({ nodes: this.nodeConfigRepository.getNode() });
 					}),

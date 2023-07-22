@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 
 import { NodeConfigRepository } from '@features/secure/node/services/node-config.repository';
 
-import { INode } from '../models';
+import { INewNode, INode, IUpdatedNode } from '../models';
 
 @Injectable({
 	providedIn: 'root',
@@ -21,21 +21,14 @@ export class NodesService {
 		return of(this.nodeConfigRepository.getNode());
 	}
 
-	update(
-		id: number,
-		data: { name: string; description: string },
-	): Observable<INode[]> {
+	update(id: number, data: IUpdatedNode): Observable<INode[]> {
 		const nodes = this.nodeConfigRepository.getNode();
 		const newNode = this.replaceById(nodes, id, data);
 		this.nodeConfigRepository.setNode(newNode);
 		return of(this.nodeConfigRepository.getNode());
 	}
 
-	create(data: {
-		name: string;
-		volume: number;
-		description: string;
-	}): Observable<INode[]> {
+	create(data: INewNode): Observable<INode[]> {
 		const nodes = this.nodeConfigRepository.getNode();
 		const id = this.getUniqueId(nodes);
 		const newNode = { id, ...data };
@@ -86,7 +79,7 @@ export class NodesService {
 			[],
 		);
 
-	getUniqueId(nodes: INode[]): number {
+	private getUniqueId(nodes: INode[]): number {
 		const ids: number[] = [];
 		JSON.stringify(nodes, (key, value) => {
 			if (key === 'id') {

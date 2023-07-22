@@ -1,5 +1,4 @@
-export interface ITing {
-	id: number;
+export interface IAddFormData {
 	name: string;
 	description: string;
 	volume: number;

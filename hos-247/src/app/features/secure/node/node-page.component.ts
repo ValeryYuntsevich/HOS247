@@ -7,7 +7,7 @@ import {
 import { Store, select } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
-import { INode, IFlatNode } from './models';
+import { INode, IFlatNode, NodeType } from './models';
 import {
 	addNode,
 	deleteNode,
@@ -74,14 +74,18 @@ export class NodePageComponent implements core.OnInit, core.OnDestroy {
 	}
 
 	editDialog(node: INode): void {
-		this.dialogService.editDialog(node).subscribe(data => {
+		this.dialogService.updateDialog(node).subscribe(data => {
 			this.store.dispatch(updateNode({ id: node.id, data }));
 		});
 	}
 
-	addDialog(): void {
-		this.dialogService.addDialog().subscribe(data => {
-			this.store.dispatch(addNode({ ...data }));
+	addContainer(): void {
+		this.dialogService.addDialog().subscribe(formData => {
+			const data = {
+				type: NodeType.Container,
+				...formData,
+			};
+			this.store.dispatch(addNode({ data }));
 		});
 	}
 
@@ -90,7 +94,9 @@ export class NodePageComponent implements core.OnInit, core.OnDestroy {
 		this.subscriptions.add(subscription);
 	}
 
-	hasChild = (_: number, node: IFlatNode) => node.expandable;
+	hasChild = (_: number, node: IFlatNode): boolean => node.expandable;
+
+	isContainer = (type: NodeType): boolean => type === NodeType.Container;
 
 	ngOnDestroy(): void {
 		this.subscriptions.unsubscribe();

@@ -14,6 +14,7 @@ export class InfoModalComponent implements core.OnInit {
 
 	readonly namePropertyName = 'name';
 	readonly volumePropertyName = 'volume';
+	readonly typePropertyName = 'type';
 	readonly descriptionPropertyName = 'description';
 
 	constructor(
@@ -29,6 +30,7 @@ export class InfoModalComponent implements core.OnInit {
 		this.infoNodeFormGroup = this.formBuilder.group({
 			[this.namePropertyName]: [{ value: this.data.name, disabled: true }],
 			[this.volumePropertyName]: [{ value: this.data.volume, disabled: true }],
+			[this.typePropertyName]: [{ value: this.data.type, disabled: true }],
 			[this.descriptionPropertyName]: [
 				{ value: this.data.description, disabled: true },
 			],

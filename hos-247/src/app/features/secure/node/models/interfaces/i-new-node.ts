@@ -1,10 +1,8 @@
 import { NodeType } from '../enums';
 
-export interface INode {
-	id: number;
+export interface INewNode {
 	name: string;
 	description: string;
 	volume: number;
 	type: NodeType;
-	boxes?: INode[];
 }

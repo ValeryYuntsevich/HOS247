@@ -19,6 +19,11 @@
       </mat-form-field>
 
       <mat-form-field appearance="legacy">
+        <mat-label>Type</mat-label>
+        <input matInput [formControlName]="typePropertyName">
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy">
         <mat-label>Description</mat-label>
         <textarea matInput rows="7" [formControlName]="descriptionPropertyName"></textarea>
       </mat-form-field>

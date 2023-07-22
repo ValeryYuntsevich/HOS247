@@ -1,5 +1,5 @@
 <section>
-  <div class="thing-edit-modal__header">
+  <div class="thing-update-modal__header">
     <h2 mat-dialog-title>Edit form</h2>
     <button mat-icon-button [mat-dialog-close]="false">
       <mat-icon>close</mat-icon>
@@ -7,7 +7,7 @@
   </div>
 
   <div mat-dialog-content>
-    <form class="thing-edit-modal__form" [formGroup]="editNodeFormGroup">
+    <form class="thing-update-modal__form" [formGroup]="updateNodeFormGroup">
       <mat-form-field appearance="legacy">
         <mat-label>Name</mat-label>
         <input matInput [formControlName]="namePropertyName">

@@ -1,2 +1,2 @@
 export * from './auth.repository';
-export * from './environment.repository';
+export * from './user-auth-config.repository';

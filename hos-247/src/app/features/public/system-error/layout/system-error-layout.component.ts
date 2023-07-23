@@ -4,8 +4,4 @@ import * as core from '@angular/core';
 	selector: 'app-system-error-layout',
 	templateUrl: './system-error-layout.component.html',
 })
-export class SystemErrorLayoutComponent implements core.OnInit {
-	constructor() {}
-
-	ngOnInit(): void {}
-}
+export class SystemErrorLayoutComponent {}

@@ -7,13 +7,11 @@ import {
 
 import { INode } from '../models';
 
-@Injectable({
-	providedIn: 'root',
-})
+@Injectable()
 export class NodeConfigRepository {
 	private readonly nodeKey = 'node';
 
-	public constructor(
+	constructor(
 		@Inject(LOCAL_STORAGE)
 		private readonly localStorageService: LocalStorageService,
 	) {}

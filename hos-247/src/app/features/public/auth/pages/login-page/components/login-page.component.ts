@@ -7,21 +7,19 @@ import * as rxjs from 'rxjs';
 
 import * as core_models from '@core/models';
 import * as core_helpers from '@core/helpers';
+import { AuthService, UserAuthConfigRepository } from '@core/repositories';
+import { EmailValidator } from '@features/public/auth/utils/validators';
 
-import * as repositories from '@core/repositories';
-import { EmailValidator } from '@features/public/auth/utils';
-import { AuthService } from '@core/repositories/auth.repository';
 import { CONFIG } from '../../../configs';
-import { UserAuthConfigRepository } from '@core/repositories/user-auth-config.repository';
 
 @core.Component({
 	selector: 'app-login-page',
 	templateUrl: './login-page.component.html',
 })
 export class LoginPageComponent implements core.OnInit, core.OnDestroy {
-	public loginFormGroup = new forms.UntypedFormGroup({});
+	loginFormGroup = new forms.UntypedFormGroup({});
 
-	public loginFormSubmitted = false;
+	loginFormSubmitted = false;
 
 	readonly emailPropertyName = 'email';
 	readonly passwordPropertyName = 'password';
@@ -31,7 +29,7 @@ export class LoginPageComponent implements core.OnInit, core.OnDestroy {
 
 	private readonly subscriptions = new rxjs.Subscription();
 
-	public constructor(
+	constructor(
 		@core.Inject(core_helpers.SEO)
 		private readonly seoService: core_helpers.SeoService,
 		private readonly formBuilder: forms.UntypedFormBuilder,
@@ -42,11 +40,11 @@ export class LoginPageComponent implements core.OnInit, core.OnDestroy {
 		this.seoService.setupRouterListeners();
 	}
 
-	public ngOnInit(): void {
+	ngOnInit(): void {
 		this.createLoginForm();
 	}
 
-	public onSubmit({ password, email }: core_models.Login): void {
+	onSubmit({ password, email }: core_models.Login): void {
 		this.loginFormSubmitted = true;
 		if (password && email) {
 			const subscription = this.authService
@@ -67,13 +65,13 @@ export class LoginPageComponent implements core.OnInit, core.OnDestroy {
 		}
 	}
 
-	public get email(): forms.UntypedFormControl {
+	get email(): forms.UntypedFormControl {
 		return this.loginFormGroup.controls[
 			this.emailPropertyName
 		] as forms.UntypedFormControl;
 	}
 
-	public get password(): forms.UntypedFormControl {
+	get password(): forms.UntypedFormControl {
 		return this.loginFormGroup.controls[
 			this.passwordPropertyName
 		] as forms.UntypedFormControl;
@@ -101,7 +99,7 @@ export class LoginPageComponent implements core.OnInit, core.OnDestroy {
 		});
 	}
 
-	public ngOnDestroy(): void {
+	ngOnDestroy(): void {
 		this.subscriptions.unsubscribe();
 	}
 }

@@ -1,7 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
 import { readNode } from './node.action';
+import { INode } from '../models';
 
-export const initialState: ReadonlyArray<any> = [];
+export const initialState: ReadonlyArray<INode> = [];
 
 export const nodeReducer = createReducer(
 	initialState,

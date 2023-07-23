@@ -34,18 +34,6 @@ export const SUBMIT_BUTTON_CONFIG: core_models.TButton = {
 	},
 };
 
-export const GOOGLE_BUTTON_CONFIG: core_models.TButton = {
-	text: 'login.button.loginWithGoogle',
-	type: 'button',
-	styles: {
-		width: '100%',
-	},
-	icon: {
-		text: 'google',
-		styles: {},
-	},
-};
-
 export const CONFIG = {
 	control: {
 		email: EMAIL_CONTROL_CONFIG,
@@ -53,6 +41,5 @@ export const CONFIG = {
 	},
 	button: {
 		login: SUBMIT_BUTTON_CONFIG,
-		google: GOOGLE_BUTTON_CONFIG,
 	},
 };

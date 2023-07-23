@@ -51,8 +51,8 @@ export class NodePageComponent implements core.OnInit, core.OnDestroy {
 	dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
 	constructor(
-		private store: Store<INode>,
-		private dialogService: DialogService,
+		private readonly store: Store<INode>,
+		private readonly dialogService: DialogService,
 	) {}
 
 	ngOnInit(): void {

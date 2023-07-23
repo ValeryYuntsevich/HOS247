@@ -11,13 +11,13 @@ import * as configs from '../configs';
 	templateUrl: './not-found-page.component.html',
 })
 export class NotFoundPageComponent implements core.OnInit, core.OnDestroy {
-	public path: string | undefined = '';
+	path: string | undefined = '';
 
 	readonly config = configs.CONFIG;
 
 	private readonly subscriptions = new Subscription();
 
-	public constructor(
+	constructor(
 		@core.Inject(SEO) private readonly seoService: SeoService,
 		private readonly route: router.ActivatedRoute,
 		private readonly router: router.Router,
@@ -25,15 +25,15 @@ export class NotFoundPageComponent implements core.OnInit, core.OnDestroy {
 		this.seoService.setupRouterListeners();
 	}
 
-	public ngOnInit(): void {
+	ngOnInit(): void {
 		this.setupRouteListeners();
 	}
 
-	public ngOnDestroy(): void {
+	ngOnDestroy(): void {
 		this.subscriptions.unsubscribe();
 	}
 
-	public onClickRedirect(): void {
+	onClickRedirect(): void {
 		this.router.navigate(['..']);
 	}
 

@@ -20,6 +20,8 @@ import { AddNewNodeModalComponent } from './modals/add-new-node-modal/add-new-no
 import { AddNodeModalComponent } from './modals/add-node-modal/add-node-modal.component';
 
 import { DialogService } from './services/dialog.service';
+import { NodesRepository } from './services/nodes.repository';
+import { NodeConfigRepository } from './services/node-config.repository';
 
 @NgModule({
 	declarations: [
@@ -38,6 +40,6 @@ import { DialogService } from './services/dialog.service';
 		StoreModule.forFeature('node', nodeReducer),
 		EffectsModule.forFeature([NodesEffect]),
 	],
-	providers: [DialogService],
+	providers: [NodesRepository, NodeConfigRepository, DialogService],
 })
 export class NodePageModule {}

@@ -3,8 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { InternalUrls } from '@core/models';
 import { PATH_RESOLVE } from '@core/helpers/providers/path-resolve.provider';
-import { SubFeatures } from '../../models';
 import { NotFoundPageComponent } from './components/not-found-page.component';
+
+import { SubFeatures } from '../../models';
 
 const routes: Routes = [
 	{

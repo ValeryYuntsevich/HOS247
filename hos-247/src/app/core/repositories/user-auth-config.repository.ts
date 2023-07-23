@@ -8,7 +8,7 @@ import { LOCAL_STORAGE, LocalStorageService } from './local-storage.repository';
 export class UserAuthConfigRepository {
 	private readonly userKey = 'token';
 
-	public constructor(
+	constructor(
 		@Inject(LOCAL_STORAGE)
 		private readonly localStorageService: LocalStorageService,
 	) {}

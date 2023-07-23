@@ -3,7 +3,7 @@ interface Constants {
 }
 
 export const CONSTANTS: Constants = {
-	initialCopyrightYear: 2021,
+	initialCopyrightYear: 2023,
 };
 
 export class CopyrightYear {

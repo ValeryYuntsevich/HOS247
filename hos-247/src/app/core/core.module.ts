@@ -24,12 +24,10 @@ import {
 		StoreRouterConnectingModule.forRoot(),
 	],
 	providers: [
-		{ provide: helpers.ENVIRONMENT, useFactory: helpers.getEnvironment },
 		{ provide: helpers.TITLE, useClass: Title },
 		{ provide: helpers.META, useClass: Meta },
 		{ provide: helpers.SEO, useClass: helpers.SeoService },
 		{ provide: helpers.PATH_RESOLVE, useClass: helpers.PathResolveService },
-		{ provide: helpers.TOKEN, useClass: helpers.TokenService },
 		{ provide: helpers.THEMING, useClass: helpers.ThemingService },
 		{ provide: LOCAL_STORAGE, useClass: LocalStorageService },
 	],

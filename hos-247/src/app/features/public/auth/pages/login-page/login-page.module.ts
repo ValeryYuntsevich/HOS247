@@ -7,12 +7,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginPageComponent } from './components/login-page.component';
 // --- routing --- //
 import { LoginPageRoutingModule } from './login-page-routing.module';
-// --- pipes --- //
-import { SafeHtmlPipeModule } from '@shared/pipes';
 // --- modules --- //
 import { MaterialModule, TranslateUIModule } from '@shared/imports';
 import {
-	HorizontalDividerModule,
 	InputPasswordControlModule,
 	ReusebleButtonModule,
 	InputTextControlModule,
@@ -27,11 +24,9 @@ import {
 		HttpClientModule,
 		ReactiveFormsModule,
 		MaterialModule,
-		HorizontalDividerModule,
 		InputPasswordControlModule,
 		ReusebleButtonModule,
 		InputTextControlModule,
-		SafeHtmlPipeModule,
 	],
 })
 export class LoginPageModule {}

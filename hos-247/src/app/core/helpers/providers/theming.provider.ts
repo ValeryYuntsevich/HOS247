@@ -2,7 +2,7 @@ import { Injectable, InjectionToken } from '@angular/core';
 
 import { Subject } from 'rxjs';
 
-export const THEMING = new InjectionToken<any>('theming');
+export const THEMING = new InjectionToken<unknown>('theming');
 
 /**
  * @description Theming service to toggle the app theme.

@@ -2,7 +2,7 @@
   <mat-toolbar color="primary">
     <mat-toolbar-row class="justify-center">
       <p>{{ 'footer.content.copyright' | translate: { copyrightIcon: '&copy;', copyrightYear } }}
-        | <a class="footer__link" role="privacy-policy" [routerLink]="internalUrls.PrivacyPolicy">{{ 'footer.content.privacyPolicy' | translate }}</a>
+        | <a class="footer__link" role="privacy-policy" (click)="openOrivacyPoliceDialog()">{{ 'footer.content.privacyPolicy' | translate }}</a>
       </p>
     </mat-toolbar-row>
   </mat-toolbar>

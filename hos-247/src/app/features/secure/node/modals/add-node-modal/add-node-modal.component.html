@@ -7,7 +7,7 @@
   </div>
 
   <div mat-dialog-content>
-    <form class="thing-add-node-modal__form" [formGroup]="addNodeFormGroup">
+    <form *ngIf="isFullLoaded; else info" class="thing-add-node-modal__form" [formGroup]="addNodeFormGroup">
       <div [formArrayName]="entitiesPropertyName">
         <div class="thing-add-node-modal__action-button">
           <button mat-raised-button color="primary" (click)="addEntitiesControl()">
@@ -41,17 +41,25 @@
           <mat-divider *ngIf="!last" class="thing-add-node-modal__divider"></mat-divider>
         </div>
       </div>
+
+      <div *ngIf="entities.errors?.['isVolumeValid']" class="thing-add-node-modal__error">Invalid volume</div>
     </form>
+
+    <ng-template #info>
+      <mat-divider class="thing-add-node-modal__divider"></mat-divider>
+      <div class="thing-add-node-modal__info">Container full loaded</div>
+      <mat-divider class="thing-add-node-modal__divider"></mat-divider>
+    </ng-template>
   </div>
 
   <div class="thing-add-node-modal__statistics">
     <div>
-      <div>Total: {{ 500 }}</div>
-      <div>Total free: {{ 50000 }}</div>
+      <div>Total: {{ rootNode.volume }}</div>
+      <div>Total free: {{ rootNodeFreeVolume }}</div>
     </div>
     <div>
-      <div>Parent: {{ 500000 }}</div>
-      <div>Parent free: {{ 50000 }}</div>
+      <div>Current container: {{ node?.volume }}</div>
+      <div>Container free: {{ nodeFreeVolume }}</div>
     </div>
   </div>
 

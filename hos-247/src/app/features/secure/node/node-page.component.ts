@@ -92,11 +92,14 @@ export class NodePageComponent implements core.OnInit, core.OnDestroy {
 		this.dialogService
 			.addDialog(id, nodes, 'containers')
 			.subscribe((formData: INodeFormData[]) => {
-				const data = formData.map(container => ({
-					...container,
-					type: NodeType.Container,
-				}));
-				this.store.dispatch(addNodeById({ id, data }));
+				if (formData.length) {
+					const data = formData.map(container => ({
+						...container,
+						volume: Number(container.volume),
+						type: NodeType.Container,
+					}));
+					this.store.dispatch(addNodeById({ id, data }));
+				}
 			});
 	}
 
@@ -104,11 +107,14 @@ export class NodePageComponent implements core.OnInit, core.OnDestroy {
 		const id = node.id;
 		const nodes = this.dataSource.data;
 		this.dialogService.addDialog(id, nodes, 'things').subscribe(formData => {
-			const data = formData.map(thing => ({
-				...thing,
-				type: NodeType.Thing,
-			}));
-			this.store.dispatch(addNodeById({ id, data }));
+			if (formData.length) {
+				const data = formData.map(thing => ({
+					...thing,
+					volume: Number(thing.volume),
+					type: NodeType.Thing,
+				}));
+				this.store.dispatch(addNodeById({ id, data }));
+			}
 		});
 	}
 

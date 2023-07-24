@@ -14,6 +14,7 @@ export class InfoModalComponent implements core.OnInit {
 
 	readonly namePropertyName = 'name';
 	readonly volumePropertyName = 'volume';
+	readonly freeVolumePropertyName = 'freeVolume';
 	readonly typePropertyName = 'type';
 	readonly descriptionPropertyName = 'description';
 
@@ -26,9 +27,22 @@ export class InfoModalComponent implements core.OnInit {
 		this.createNodeForm();
 	}
 
+	get nodeFreeVolume(): number {
+		let result =
+			this.data?.boxes && this.data.boxes.length
+				? this.data.boxes.reduce((acc, item) => {
+						return acc + Number(item.volume);
+				  }, 0)
+				: this.data!.volume;
+		return result ? this.data!.volume - result : this.data!.volume;
+	}
+
 	private createNodeForm(): void {
 		this.infoNodeFormGroup = this.formBuilder.group({
 			[this.namePropertyName]: [{ value: this.data.name, disabled: true }],
+			[this.freeVolumePropertyName]: [
+				{ value: this.nodeFreeVolume, disabled: true },
+			],
 			[this.volumePropertyName]: [{ value: this.data.volume, disabled: true }],
 			[this.typePropertyName]: [{ value: this.data.type, disabled: true }],
 			[this.descriptionPropertyName]: [

@@ -4,6 +4,9 @@ import {
 	UntypedFormBuilder,
 	Validators,
 	UntypedFormArray,
+	ValidatorFn,
+	AbstractControl,
+	ValidationErrors,
 } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
@@ -63,6 +66,20 @@ export class AddNodeModalComponent implements core.OnInit {
 		return result;
 	}
 
+	get nodeFreeVolume(): number {
+		let result =
+			this.node?.boxes && this.node.boxes.length
+				? this.node.boxes.reduce((acc, item) => {
+						return acc + Number(item.volume);
+				  }, 0)
+				: this.node!.volume;
+		return result ? this.node!.volume - result : this.node!.volume;
+	}
+
+	get isFullLoaded(): number {
+		return this.nodeFreeVolume;
+	}
+
 	get type(): NodeType {
 		return this.node ? NodeType[this.node.type] : NodeType.Container;
 	}
@@ -71,13 +88,28 @@ export class AddNodeModalComponent implements core.OnInit {
 		return this.data.title;
 	}
 
-	get rootTotalVolume(): any {
-		const rootNode = this.searchNode(this.data.id, this.data.nodes);
-		return rootNode;
+	get rootNode(): INode {
+		return this.searchRootNode(this.data.nodes, this.data.id)[0];
+	}
+
+	get rootNodeFreeVolume(): number {
+		let result =
+			this.rootNode?.boxes && this.rootNode.boxes.length
+				? this.rootNode.boxes.reduce((acc, item) => {
+						return acc + Number(item.volume);
+				  }, 0)
+				: this.rootNode!.volume;
+		return result ? this.rootNode!.volume - result : this.rootNode!.volume;
 	}
 
 	get isContainer(): boolean {
 		return this.type === NodeType.Container;
+	}
+
+	private searchRootNode(nodes: INode[], currentId: number): INode[] {
+		const find = ({ id, boxes }: INode) =>
+			id === currentId || (boxes && boxes.some(find));
+		return nodes.filter(find);
 	}
 
 	private addFormGroup(): UntypedFormGroup {
@@ -88,7 +120,9 @@ export class AddNodeModalComponent implements core.OnInit {
 			],
 			[this.volumePropertyName]: [
 				null,
-				{ validators: [Validators.required, Validators.min(10)] },
+				{
+					validators: [Validators.required, Validators.min(1)],
+				},
 			],
 			[this.descriptionPropertyName]: [
 				null,
@@ -120,15 +154,21 @@ export class AddNodeModalComponent implements core.OnInit {
 		return null;
 	}
 
-	private searchNode(id: number, nodes: INode[]): INode[] {
-		return nodes?.filter(({ boxes }: INode) =>
-			boxes?.find((box: INode) => box.id === id),
-		);
-	}
-
 	private createNodeForm(): void {
 		this.addNodeFormGroup = this.formBuilder.group({
-			entities: this.formBuilder.array([this.addFormGroup()]),
+			entities: this.formBuilder.array(
+				[this.addFormGroup()],
+				[this.checkerVolumeValidator(this.nodeFreeVolume)],
+			),
 		});
 	}
+
+	private checkerVolumeValidator =
+		(freeVolume: number): ValidatorFn =>
+		(control: AbstractControl): ValidationErrors | null => {
+			const currentVolume = control.value.reduce((acc: number, item: INode) => {
+				return acc + item.volume;
+			}, 0);
+			return currentVolume > freeVolume ? { isVolumeValid: true } : null;
+		};
 }

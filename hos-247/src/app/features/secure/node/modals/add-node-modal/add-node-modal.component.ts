@@ -72,7 +72,7 @@ export class AddNodeModalComponent implements core.OnInit {
 				? this.node.boxes.reduce((acc, item) => {
 						return acc + Number(item.volume);
 				  }, 0)
-				: this.node!.volume;
+				: null;
 		return result ? this.node!.volume - result : this.node!.volume;
 	}
 
@@ -98,7 +98,7 @@ export class AddNodeModalComponent implements core.OnInit {
 				? this.rootNode.boxes.reduce((acc, item) => {
 						return acc + Number(item.volume);
 				  }, 0)
-				: this.rootNode!.volume;
+				: null;
 		return result ? this.rootNode!.volume - result : this.rootNode!.volume;
 	}
 
@@ -167,7 +167,7 @@ export class AddNodeModalComponent implements core.OnInit {
 		(freeVolume: number): ValidatorFn =>
 		(control: AbstractControl): ValidationErrors | null => {
 			const currentVolume = control.value.reduce((acc: number, item: INode) => {
-				return acc + item.volume;
+				return acc + Number(item.volume);
 			}, 0);
 			return currentVolume > freeVolume ? { isVolumeValid: true } : null;
 		};

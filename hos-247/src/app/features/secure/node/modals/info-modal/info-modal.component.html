@@ -18,7 +18,7 @@
         <input matInput [formControlName]="volumePropertyName">
       </mat-form-field>
 
-      <mat-form-field appearance="legacy">
+      <mat-form-field *ngIf="isContainer(data.type)" appearance="legacy">
         <mat-label>Free volume</mat-label>
         <input matInput [formControlName]="freeVolumePropertyName">
       </mat-form-field>

@@ -76,13 +76,17 @@ export class NodePageComponent implements core.OnInit, core.OnDestroy {
 
 	editDialog(node: INode): void {
 		this.dialogService.updateDialog(node).subscribe(data => {
-			this.store.dispatch(updateNode({ id: node.id, data }));
+			if (data) {
+				this.store.dispatch(updateNode({ id: node.id, data }));
+			}
 		});
 	}
 
 	addNewContainer(): void {
 		this.dialogService.addNewDialog().subscribe(data => {
-			this.store.dispatch(createNewNode({ data }));
+			if (data) {
+				this.store.dispatch(createNewNode({ data }));
+			}
 		});
 	}
 

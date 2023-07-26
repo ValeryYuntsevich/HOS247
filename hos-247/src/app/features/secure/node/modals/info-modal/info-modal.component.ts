@@ -1,7 +1,7 @@
 import * as core from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import { INode } from '../../models';
+import { INode, NodeType } from '../../models';
 import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 
 @core.Component({
@@ -19,7 +19,7 @@ export class InfoModalComponent implements core.OnInit {
 	readonly descriptionPropertyName = 'description';
 
 	constructor(
-		@core.Inject(MAT_DIALOG_DATA) private readonly data: INode,
+		@core.Inject(MAT_DIALOG_DATA) public readonly data: INode,
 		private readonly formBuilder: UntypedFormBuilder,
 	) {}
 
@@ -27,13 +27,15 @@ export class InfoModalComponent implements core.OnInit {
 		this.createNodeForm();
 	}
 
+	isContainer = (type: NodeType): boolean => type === NodeType.Container;
+
 	get nodeFreeVolume(): number {
 		let result =
 			this.data?.boxes && this.data.boxes.length
 				? this.data.boxes.reduce((acc, item) => {
 						return acc + Number(item.volume);
 				  }, 0)
-				: this.data!.volume;
+				: null;
 		return result ? this.data!.volume - result : this.data!.volume;
 	}
 
